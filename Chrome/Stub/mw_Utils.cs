@@ -37,7 +37,7 @@ namespace Stub
 					{
 						try
 						{
-							mw_Utils.dRR21g0pHl1zrM46lVKUkT9M(ipaddress.ToString());
+							mw_Utils.mw_createSocket(ipaddress.ToString());
 							if (mw_Utils.mw_hasSocketAsyncCallSucceeded)
 							{
 								break;
@@ -50,7 +50,7 @@ namespace Stub
 				}
 				else
 				{
-					mw_Utils.dRR21g0pHl1zrM46lVKUkT9M(text);
+					mw_Utils.mw_createSocket(text);
 				}
 			}
 			catch (Exception ex2)
@@ -59,7 +59,7 @@ namespace Stub
 		}
 
 		// Token: 0x06000052 RID: 82 RVA: 0x00002FC4 File Offset: 0x000011C4
-		public static object dRR21g0pHl1zrM46lVKUkT9M(string SnWwUCSGb5CwQPNw3fbamQnl)
+		public static object mw_createSocket(string SnWwUCSGb5CwQPNw3fbamQnl)
 		{
 			try
 			{
